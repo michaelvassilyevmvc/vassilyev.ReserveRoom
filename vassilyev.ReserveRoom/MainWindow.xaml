@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:vassilyev.ReserveRoom"
         mc:Ignorable="d"
+        xmlns:views="clr-namespace:vassilyev.ReserveRoom.Views"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+    <Grid MaxWidth="600" Margin="20 10">
+        <views:MakeReservationView />
     </Grid>
 </Window>

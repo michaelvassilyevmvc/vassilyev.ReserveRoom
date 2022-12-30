@@ -29,7 +29,7 @@ namespace vassilyev.ReserveRoom
 
             }
 
-            IEnumerable<Reservation> reservations = hotel.GetReservationForUser("Hilton");
+            IEnumerable<Reservation> reservations = hotel.GetAllReservations();
             base.OnStartup(e);
         }
 
