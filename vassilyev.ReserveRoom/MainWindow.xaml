@@ -8,6 +8,6 @@
         xmlns:views="clr-namespace:vassilyev.ReserveRoom.Views"
         Title="MainWindow" Height="450" Width="800">
     <Grid MaxWidth="600" Margin="20 10">
-        <views:MakeReservationView />
+        <views:MakeReservationView DataContext="{Binding CurrentViewModel}" />
     </Grid>
 </Window>

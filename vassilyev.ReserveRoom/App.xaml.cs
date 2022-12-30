@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-using vassilyev.ReserveRoom.Exceptions;
+﻿using System.Windows;
 using vassilyev.ReserveRoom.Models;
+using vassilyev.ReserveRoom.ViewModels;
 
 namespace vassilyev.ReserveRoom
 {
@@ -15,25 +9,23 @@ namespace vassilyev.ReserveRoom
     /// </summary>
     public partial class App : Application
     {
+        private readonly Hotel _hotel;
+        public App()
+        {
+            _hotel = new Hotel("Hilton");
+        }
+
         protected override void OnStartup(StartupEventArgs e)
         {
-            Hotel hotel = new Hotel("Hilton");
-
-            try
+            MainWindow = new MainWindow()
             {
-                hotel.MakeReservation(new Reservation(new RoomID(1, 3), "Hilton", new DateTime(1995, 1, 2), new DateTime(1999, 1, 3)));
-                hotel.MakeReservation(new Reservation(new RoomID(1, 3), "Hilton", new DateTime(2000, 1, 1), new DateTime(2000, 1, 2)));
-            }
-            catch (ReservationConflictException ex)
-            {
-
-            }
-
-            IEnumerable<Reservation> reservations = hotel.GetAllReservations();
+                DataContext = new MainViewModel(_hotel)
+            };
+            MainWindow.Show();
             base.OnStartup(e);
         }
 
-        
+
 
     }
 }
